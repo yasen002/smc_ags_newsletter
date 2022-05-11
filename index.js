@@ -1,4 +1,5 @@
-const data = {
+var data = {
+  
   "2021_2022": [
     {
       issueNumber: 1,
@@ -272,12 +273,13 @@ const data = {
     },
   ],
 };
+//const jsonObject = require('./Newsletters.json');
 
-function addElement() {
-  // create a new div element
+/*function addElement() {
+  // creates a new div element
   const newDiv = document.createElement("div");
 
-  // and give it some content
+  // and gives it some content
   const newContent = document.createTextNode("Hi there and greetings!");
 
   // add the text node to the newly created div
@@ -287,17 +289,74 @@ function addElement() {
   const currentDiv = document.getElementById("newsletters1");
   document.body.appendChild(newDiv, currentDiv);
 }
+*/
 
-addElement();
+const targetDiv = document.getElementsByClassName("newsletters");
 
-//selecting the parent. where we want to insert the html element
-var news = document.getElementsByClassName("news-story")[0];
-
-for (var i = 0; i < data.length; i++) {
-  var h5 = document.createElement("h5");
-  h5.innerHTML = data[i].title;
-  news.appendChild(h5);
-  var p = document.createElement("p");
-  p.innerHTML = data[i].author;
-  news.appendChild(p);
+function createHtmlElement(tagTpe, content, classes, id)
+{
+  var tag = document.createElement(tagTpe);
+  tag.id = id;
+  tag.class = classes;
+  tag.innerHtml = content;
+  return tag;
 }
+
+function appendHtml(parent, child)
+{
+  parent.appendChild(child);
+}
+
+
+//function createHtmlElement(tagTpe, content, classes, id)
+
+//outer loop
+//for each newsletters (years eg. 2021-2022) in data object
+for(var newsletters in data){
+  createHTMLElement (section, "", newsletter_container,"");
+
+    createHTMLElement (h1, data[2021_2022], newsletter__title, "");
+      appendHTML (section, h1);
+      
+    createHTMLElement (div, "", newsLetters,"");
+      appendHTML (section, div); 
+  }
+  
+  //inner loop for each newsletter in newsletters
+  for(var newsletter in newsletters){
+    createHTMLElement (div, "", newsletter, "");
+
+    createHTMLElement (img, src = data[url],newletter__cover,"");
+
+    createHTMLElement (div, "", overlay, "");
+
+      createHTMLElement (p, "Editor", "" , data[editor]);
+        appendHTML (div,p);
+
+      createHTMLElement (p, "Date", "", data[date]);
+        appendHTML (div,p);
+
+      createHTMLElement (p, "Pages", "", data[pages] );
+        appendHTML (div, p);
+
+      createHTMLElement (p, "Issue", "", data[issueNumber])
+        appendHTML (div, p);
+    }
+  
+//loop data and for each
+//  create a section with class newsletter__container
+//  create a h1 with class newsletter__title
+//  create a div with class newsLetters
+//  (at this point we will have array of length 3 or 4 depend on the newsletters)
+//    loop through the array and for each:
+//      create div with class newsletter
+//      create img with class newletter__cover
+//      create div with class overlay
+//      create 4 p with content "Editor", "Date", "Pages", "Issue"
+//      organize all html tag into desired htmnl structure
+
+//to finish these steps we need theses functions: 
+//createHtmlElement(tagTpe, content, classes, id)
+//appendHtml(parent, child)
+
+ 
